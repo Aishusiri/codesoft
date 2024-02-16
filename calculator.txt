@@ -1,0 +1,92 @@
+class Calculator:
+    def _init_(self):
+        self.memory = 0
+
+    def add(self, x, y):
+        return x + y
+
+    def subtract(self, x, y):
+        return x - y
+
+    def multiply(self, x, y):
+        return x * y
+
+    def divide(self, x, y):
+        if y == 0:
+            return "Error: Cannot divide by zero!"
+        else:
+            return x / y
+
+    def exponentiate(self, x, y):
+        return x ** y
+
+    def square_root(self, x):
+        if x < 0:
+            return "Error: Cannot compute square root of a negative number!"
+        else:
+            return x ** 0.5
+
+    def modulus(self, x, y):
+        if y == 0:
+            return "Error: Cannot compute modulus with zero divisor!"
+        else:
+            return x % y
+
+    def memory_store(self, value):
+        self.memory = value
+        print("Value stored in memory.")
+
+    def memory_recall(self):
+        return self.memory
+
+def main():
+    calc = Calculator()
+
+    while True:
+        print("\nSelect operation:")
+        print("1. Add")
+        print("2. Subtract")
+        print("3. Multiply")
+        print("4. Divide")
+        print("5. Exponentiate")
+        print("6. Square Root")
+        print("7. Modulus")
+        print("8. Memory Store")
+        print("9. Memory Recall")
+        print("10. Exit")
+
+        choice = input("Enter choice (1-10): ")
+
+        if choice == '10':
+            print("Exiting calculator. Goodbye!")
+            break
+
+        if choice in ('1', '2', '3', '4', '5', '7'):
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+
+            if choice == '1':
+                print("Result:", calc.add(num1, num2))
+            elif choice == '2':
+                print("Result:", calc.subtract(num1, num2))
+            elif choice == '3':
+                print("Result:", calc.multiply(num1, num2))
+            elif choice == '4':
+                print("Result:", calc.divide(num1, num2))
+            elif choice == '5':
+                print("Result:", calc.exponentiate(num1, num2))
+            elif choice == '7':
+                print("Result:", calc.modulus(num1, num2))
+        elif choice == '6':
+            num = float(input("Enter a number: "))
+            print("Result:", calc.square_root(num))
+        elif choice == '8':
+            value = float(input("Enter value to store in memory: "))
+            calc.memory_store(value)
+        elif choice == '9':
+            print("Value in memory:", calc.memory_recall())
+        else:
+            print("Invalid Input")
+
+if _name_ == "_main_":
+    main()
